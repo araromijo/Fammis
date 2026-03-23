@@ -3,17 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fammis Place - Best Taste in Badagry/Lagos</title>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <title>Fammis Place - Premium Pastries & Cakes in Badagry/Lagos</title>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Syne:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
-            --primary: #D4A574;
-            --secondary: #8B4513;
-            --accent: #FF6B35;
-            --dark: #2C1810;
-            --light: #FFF8F0;
-            --gold: #C9A961;
+            --coral: #FF6B6B;
+            --mint: #4ECDC4;
+            --lavender: #A8E6CF;
+            --yellow: #FFE66D;
+            --purple: #9B59B6;
+            --peach: #FFB6A8;
+            --dark: #2D3436;
+            --light: #F7FFF7;
+            --gradient-1: linear-gradient(135deg, #FF6B6B 0%, #FFE66D 50%, #4ECDC4 100%);
+            --gradient-2: linear-gradient(135deg, #9B59B6 0%, #FF6B6B 100%);
+            --gradient-3: linear-gradient(135deg, #4ECDC4 0%, #A8E6CF 100%);
         }
 
         * {
@@ -23,24 +28,78 @@
         }
 
         body {
-            font-family: 'Poppins', sans-serif;
+            font-family: 'Space Grotesk', sans-serif;
             background-color: var(--light);
             color: var(--dark);
             line-height: 1.6;
+            overflow-x: hidden;
         }
 
         h1, h2, h3, h4 {
-            font-family: 'Playfair Display', serif;
+            font-family: 'Syne', sans-serif;
+        }
+
+        /* Animated Background */
+        .bg-shapes {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: -1;
+            opacity: 0.1;
+        }
+
+        .shape {
+            position: absolute;
+            filter: blur(50px);
+            animation: float 20s infinite ease-in-out;
+        }
+
+        .shape-1 {
+            width: 400px;
+            height: 400px;
+            background: var(--coral);
+            top: 10%;
+            left: 10%;
+            border-radius: 50%;
+            animation-delay: 0s;
+        }
+
+        .shape-2 {
+            width: 300px;
+            height: 300px;
+            background: var(--mint);
+            top: 60%;
+            right: 10%;
+            border-radius: 50%;
+            animation-delay: 5s;
+        }
+
+        .shape-3 {
+            width: 250px;
+            height: 250px;
+            background: var(--yellow);
+            bottom: 10%;
+            left: 30%;
+            border-radius: 50%;
+            animation-delay: 10s;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translate(0, 0) scale(1); }
+            33% { transform: translate(30px, -50px) scale(1.1); }
+            66% { transform: translate(-20px, 20px) scale(0.9); }
         }
 
         /* Navigation */
         nav {
             position: fixed;
             width: 100%;
-            background: rgba(44, 24, 16, 0.95);
-            backdrop-filter: blur(10px);
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(20px);
             z-index: 1000;
             padding: 1rem 0;
+            box-shadow: 0 5px 30px rgba(0,0,0,0.1);
             transition: all 0.3s ease;
         }
 
@@ -54,11 +113,20 @@
         }
 
         .logo {
-            font-family: 'Playfair Display', serif;
+            font-family: 'Syne', sans-serif;
             font-size: 2rem;
-            font-weight: 700;
-            color: var(--gold);
+            font-weight: 800;
+            background: var(--gradient-2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
             text-decoration: none;
+            animation: glow 3s ease-in-out infinite;
+        }
+
+        @keyframes glow {
+            0%, 100% { filter: brightness(1); }
+            50% { filter: brightness(1.2); }
         }
 
         .nav-links {
@@ -68,114 +136,134 @@
         }
 
         .nav-links a {
-            color: white;
+            color: var(--dark);
             text-decoration: none;
-            font-weight: 500;
-            transition: color 0.3s ease;
+            font-weight: 600;
+            transition: all 0.3s ease;
             position: relative;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
         }
 
         .nav-links a:hover {
-            color: var(--gold);
-        }
-
-        .nav-links a::after {
-            content: '';
-            position: absolute;
-            bottom: -5px;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: var(--gold);
-            transition: width 0.3s ease;
-        }
-
-        .nav-links a:hover::after {
-            width: 100%;
+            background: var(--gradient-1);
+            color: white;
+            transform: translateY(-2px);
         }
 
         .mobile-menu {
             display: none;
-            color: white;
+            color: var(--dark);
             font-size: 1.5rem;
             cursor: pointer;
         }
 
         /* Hero Section */
         .hero {
-            height: 100vh;
-            background: linear-gradient(135deg, rgba(44,24,16,0.8), rgba(139,69,19,0.7)), 
-                        url('https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=1920') center/cover;
+            min-height: 100vh;
+            background: var(--gradient-1);
             display: flex;
             align-items: center;
             justify-content: center;
             text-align: center;
             color: white;
             position: relative;
+            overflow: hidden;
+            padding: 6rem 2rem 4rem;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            width: 200%;
+            height: 200%;
+            background: repeating-linear-gradient(
+                45deg,
+                transparent,
+                transparent 10px,
+                rgba(255,255,255,0.05) 10px,
+                rgba(255,255,255,0.05) 20px
+            );
+            animation: slide 20s linear infinite;
+        }
+
+        @keyframes slide {
+            0% { transform: translate(-50%, -50%); }
+            100% { transform: translate(0, 0); }
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
         }
 
         .hero-content h1 {
-            font-size: 4.5rem;
+            font-size: 5rem;
             margin-bottom: 1rem;
-            color: var(--gold);
-            animation: fadeInUp 1s ease;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+            font-weight: 800;
+            text-shadow: 3px 3px 0px rgba(0,0,0,0.2);
+            animation: fadeInUp 1s ease, bounce 2s ease 1s infinite;
+            letter-spacing: -2px;
         }
 
         .hero-content .tagline {
-            font-size: 1.8rem;
+            font-size: 2rem;
             margin-bottom: 1rem;
-            font-weight: 300;
+            font-weight: 600;
             animation: fadeInUp 1s ease 0.2s backwards;
+            text-shadow: 2px 2px 0px rgba(0,0,0,0.1);
         }
 
         .hero-content .subtitle {
-            font-size: 1.2rem;
-            margin-bottom: 2rem;
-            color: var(--primary);
+            font-size: 1.3rem;
+            margin-bottom: 2.5rem;
+            font-weight: 500;
             animation: fadeInUp 1s ease 0.4s backwards;
+            opacity: 0.95;
         }
 
         .hero-buttons {
             display: flex;
-            gap: 1rem;
+            gap: 1.5rem;
             justify-content: center;
             animation: fadeInUp 1s ease 0.6s backwards;
+            flex-wrap: wrap;
         }
 
         .btn {
-            padding: 1rem 2.5rem;
+            padding: 1.2rem 3rem;
             border: none;
             border-radius: 50px;
-            font-size: 1rem;
-            font-weight: 600;
+            font-size: 1.1rem;
+            font-weight: 700;
             cursor: pointer;
             transition: all 0.3s ease;
             text-decoration: none;
             display: inline-block;
+            font-family: 'Space Grotesk', sans-serif;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
         }
 
         .btn-primary {
-            background: var(--accent);
-            color: white;
+            background: white;
+            color: var(--coral);
         }
 
         .btn-primary:hover {
-            background: #e55a2b;
-            transform: translateY(-3px);
-            box-shadow: 0 10px 20px rgba(255,107,53,0.3);
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.3);
         }
 
         .btn-secondary {
             background: transparent;
             color: white;
-            border: 2px solid var(--gold);
+            border: 3px solid white;
         }
 
         .btn-secondary:hover {
-            background: var(--gold);
-            color: var(--dark);
-            transform: translateY(-3px);
+            background: white;
+            color: var(--coral);
+            transform: translateY(-5px) scale(1.05);
         }
 
         .scroll-indicator {
@@ -184,16 +272,17 @@
             left: 50%;
             transform: translateX(-50%);
             animation: bounce 2s infinite;
+            z-index: 2;
         }
 
         .scroll-indicator i {
-            font-size: 2rem;
-            color: var(--gold);
+            font-size: 2.5rem;
+            color: white;
         }
 
         /* Section Styles */
         section {
-            padding: 5rem 2rem;
+            padding: 6rem 2rem;
         }
 
         .container {
@@ -203,51 +292,63 @@
 
         .section-title {
             text-align: center;
-            margin-bottom: 3rem;
+            margin-bottom: 4rem;
         }
 
         .section-title h2 {
-            font-size: 3rem;
-            color: var(--dark);
+            font-size: 3.5rem;
+            background: var(--gradient-2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
             margin-bottom: 1rem;
-            position: relative;
+            font-weight: 800;
             display: inline-block;
         }
 
-        .section-title h2::after {
-            content: '';
-            position: absolute;
-            bottom: -10px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 80px;
-            height: 4px;
-            background: var(--gold);
-        }
-
         .section-title p {
-            color: var(--secondary);
-            font-size: 1.1rem;
-            margin-top: 1.5rem;
+            color: var(--dark);
+            font-size: 1.3rem;
+            font-weight: 500;
+            margin-top: 1rem;
         }
 
         /* About Section */
         .about {
             background: white;
+            position: relative;
         }
 
         .about-content {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 4rem;
+            gap: 5rem;
             align-items: center;
         }
 
         .about-image {
             position: relative;
-            border-radius: 20px;
+            border-radius: 30px;
             overflow: hidden;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            box-shadow: 0 30px 60px rgba(0,0,0,0.15);
+            transform: rotate(-3deg);
+            transition: transform 0.5s ease;
+        }
+
+        .about-image:hover {
+            transform: rotate(0deg) scale(1.02);
+        }
+
+        .about-image::before {
+            content: '';
+            position: absolute;
+            top: -20px;
+            left: -20px;
+            right: 20px;
+            bottom: 20px;
+            border: 4px solid var(--coral);
+            border-radius: 30px;
+            z-index: -1;
         }
 
         .about-image img {
@@ -262,93 +363,119 @@
         }
 
         .about-text h3 {
-            font-size: 2.5rem;
-            color: var(--dark);
+            font-size: 2.8rem;
+            background: var(--gradient-2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
             margin-bottom: 1.5rem;
+            font-weight: 700;
         }
 
         .about-text p {
             margin-bottom: 1.5rem;
             color: #666;
-            line-height: 1.8;
+            line-height: 1.9;
+            font-size: 1.1rem;
         }
 
         .features {
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 1.5rem;
-            margin-top: 2rem;
+            margin-top: 2.5rem;
         }
 
         .feature {
             display: flex;
             align-items: center;
             gap: 1rem;
+            padding: 1.2rem;
+            background: var(--light);
+            border-radius: 15px;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+
+        .feature:hover {
+            transform: translateY(-5px);
+            border-color: var(--coral);
+            box-shadow: 0 10px 30px rgba(255,107,107,0.2);
         }
 
         .feature i {
-            font-size: 2rem;
-            color: var(--accent);
+            font-size: 2.2rem;
+            background: var(--gradient-1);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
 
         .feature span {
-            font-weight: 600;
+            font-weight: 700;
             color: var(--dark);
+            font-size: 1.1rem;
         }
 
         /* Menu Section */
         .menu {
-            background: linear-gradient(to bottom, var(--light), white);
+            background: linear-gradient(180deg, var(--light) 0%, white 100%);
+            position: relative;
         }
 
         .menu-categories {
             display: flex;
             justify-content: center;
             gap: 1rem;
-            margin-bottom: 3rem;
+            margin-bottom: 4rem;
             flex-wrap: wrap;
         }
 
         .menu-category {
-            padding: 0.8rem 2rem;
+            padding: 1rem 2.5rem;
             background: white;
-            border: 2px solid var(--primary);
+            border: 3px solid var(--mint);
             border-radius: 50px;
             cursor: pointer;
             transition: all 0.3s ease;
-            font-weight: 600;
+            font-weight: 700;
             color: var(--dark);
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1rem;
         }
 
         .menu-category:hover,
         .menu-category.active {
-            background: var(--primary);
-            color: white;
-            transform: translateY(-2px);
+            background: var(--gradient-3);
+            color: var(--dark);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(78,205,196,0.3);
         }
 
         .menu-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2.5rem;
         }
 
         .menu-item {
             background: white;
-            border-radius: 20px;
+            border-radius: 25px;
             overflow: hidden;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-            transition: all 0.3s ease;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.1);
+            transition: all 0.4s ease;
+            border: 3px solid transparent;
         }
 
         .menu-item:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+            transform: translateY(-15px) scale(1.02);
+            box-shadow: 0 25px 60px rgba(0,0,0,0.15);
+            border-color: var(--coral);
         }
 
         .menu-item-image {
-            height: 220px;
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            height: 240px;
+            background: var(--gradient-1);
             display: flex;
             align-items: center;
             justify-content: center;
@@ -361,22 +488,34 @@
             width: 100%;
             height: 100%;
             object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .menu-item:hover .menu-item-image img {
+            transform: scale(1.1);
         }
 
         .menu-item-badge {
             position: absolute;
             top: 1rem;
             right: 1rem;
-            background: var(--accent);
+            background: var(--coral);
             color: white;
-            padding: 0.3rem 1rem;
-            border-radius: 20px;
+            padding: 0.5rem 1.2rem;
+            border-radius: 25px;
             font-size: 0.85rem;
-            font-weight: 600;
+            font-weight: 700;
+            box-shadow: 0 5px 15px rgba(255,107,107,0.4);
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
         }
 
         .menu-item-content {
-            padding: 1.5rem;
+            padding: 2rem;
         }
 
         .menu-item-header {
@@ -387,54 +526,62 @@
         }
 
         .menu-item h3 {
-            font-size: 1.4rem;
+            font-size: 1.5rem;
             color: var(--dark);
+            font-weight: 700;
         }
 
         .price {
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: var(--accent);
+            font-size: 1.8rem;
+            font-weight: 800;
+            background: var(--gradient-2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
 
         .menu-item p {
             color: #666;
-            font-size: 0.95rem;
-            line-height: 1.6;
+            font-size: 1rem;
+            line-height: 1.7;
+            margin-bottom: 1.5rem;
         }
 
         .menu-item-footer {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-top: 1rem;
-            padding-top: 1rem;
-            border-top: 1px solid #eee;
+            padding-top: 1.5rem;
+            border-top: 2px solid var(--light);
         }
 
         .rating {
-            color: var(--gold);
+            color: var(--yellow);
+            font-size: 1.2rem;
+            text-shadow: 1px 1px 0px rgba(0,0,0,0.1);
         }
 
         .order-btn {
-            padding: 0.5rem 1.5rem;
-            background: var(--dark);
+            padding: 0.8rem 2rem;
+            background: var(--gradient-2);
             color: white;
             border: none;
             border-radius: 25px;
             cursor: pointer;
             transition: all 0.3s ease;
-            font-weight: 600;
+            font-weight: 700;
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1rem;
         }
 
         .order-btn:hover {
-            background: var(--accent);
-            transform: scale(1.05);
+            transform: scale(1.1) rotate(-2deg);
+            box-shadow: 0 10px 25px rgba(155,89,182,0.4);
         }
 
         /* Reservation Section */
         .reservation {
-            background: linear-gradient(135deg, var(--dark), var(--secondary));
+            background: var(--gradient-2);
             color: white;
             position: relative;
             overflow: hidden;
@@ -447,26 +594,40 @@
             right: -20%;
             width: 600px;
             height: 600px;
-            background: rgba(212, 165, 116, 0.1);
+            background: rgba(255,255,255,0.1);
             border-radius: 50%;
+            animation: float 15s infinite ease-in-out;
+        }
+
+        .reservation::after {
+            content: '';
+            position: absolute;
+            bottom: -30%;
+            left: -10%;
+            width: 400px;
+            height: 400px;
+            background: rgba(255,230,109,0.2);
+            border-radius: 50%;
+            animation: float 12s infinite ease-in-out reverse;
         }
 
         .reservation .section-title h2 {
-            color: white;
-        }
-
-        .reservation .section-title h2::after {
-            background: var(--gold);
+            background: white;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
 
         .reservation-form {
             max-width: 800px;
             margin: 0 auto;
-            background: rgba(255,255,255,0.1);
-            backdrop-filter: blur(10px);
-            padding: 3rem;
-            border-radius: 20px;
-            border: 1px solid rgba(255,255,255,0.2);
+            background: rgba(255,255,255,0.15);
+            backdrop-filter: blur(20px);
+            padding: 3.5rem;
+            border-radius: 30px;
+            border: 3px solid rgba(255,255,255,0.3);
+            position: relative;
+            z-index: 1;
         }
 
         .form-grid {
@@ -485,48 +646,54 @@
 
         .form-group label {
             display: block;
-            margin-bottom: 0.5rem;
-            font-weight: 500;
-            color: var(--gold);
+            margin-bottom: 0.7rem;
+            font-weight: 700;
+            color: white;
+            font-size: 1rem;
         }
 
         .form-group input,
         .form-group select,
         .form-group textarea {
             width: 100%;
-            padding: 1rem;
-            border: none;
-            border-radius: 10px;
-            background: rgba(255,255,255,0.9);
-            font-family: 'Poppins', sans-serif;
+            padding: 1.2rem;
+            border: 3px solid rgba(255,255,255,0.3);
+            border-radius: 15px;
+            background: rgba(255,255,255,0.95);
+            font-family: 'Space Grotesk', sans-serif;
             font-size: 1rem;
             transition: all 0.3s ease;
+            font-weight: 500;
         }
 
         .form-group input:focus,
         .form-group select:focus,
         .form-group textarea:focus {
             outline: none;
-            box-shadow: 0 0 0 3px var(--gold);
+            border-color: var(--yellow);
+            box-shadow: 0 0 0 5px rgba(255,230,109,0.3);
+            transform: translateY(-2px);
         }
 
         .submit-btn {
             width: 100%;
-            padding: 1.2rem;
-            background: var(--accent);
-            color: white;
+            padding: 1.5rem;
+            background: var(--yellow);
+            color: var(--dark);
             border: none;
-            border-radius: 10px;
-            font-size: 1.1rem;
-            font-weight: 600;
+            border-radius: 15px;
+            font-size: 1.2rem;
+            font-weight: 800;
             cursor: pointer;
             transition: all 0.3s ease;
+            font-family: 'Space Grotesk', sans-serif;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
         }
 
         .submit-btn:hover {
-            background: #e55a2b;
-            transform: translateY(-2px);
-            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+            background: white;
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.3);
         }
 
         /* Contact Section */
@@ -537,78 +704,103 @@
         .contact-content {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 4rem;
+            gap: 5rem;
         }
 
         .contact-info h3 {
-            font-size: 2rem;
+            font-size: 2.5rem;
             margin-bottom: 1.5rem;
-            color: var(--dark);
+            background: var(--gradient-2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-weight: 700;
         }
 
         .contact-info > p {
             color: #666;
-            margin-bottom: 2rem;
-            line-height: 1.8;
+            margin-bottom: 2.5rem;
+            line-height: 1.9;
+            font-size: 1.1rem;
         }
 
         .contact-details {
-            margin-bottom: 2rem;
+            margin-bottom: 2.5rem;
         }
 
         .contact-item {
             display: flex;
             align-items: flex-start;
-            gap: 1rem;
-            margin-bottom: 1.5rem;
+            gap: 1.2rem;
+            margin-bottom: 1.8rem;
+            padding: 1.2rem;
+            background: var(--light);
+            border-radius: 15px;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+
+        .contact-item:hover {
+            transform: translateX(10px);
+            border-color: var(--coral);
+            box-shadow: 0 10px 30px rgba(255,107,107,0.15);
         }
 
         .contact-item i {
-            font-size: 1.5rem;
-            color: var(--accent);
-            margin-top: 0.3rem;
+            font-size: 1.8rem;
+            background: var(--gradient-1);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-top: 0.2rem;
         }
 
         .contact-item div h4 {
             color: var(--dark);
             margin-bottom: 0.3rem;
+            font-weight: 700;
+            font-size: 1.1rem;
         }
 
         .contact-item div p {
             color: #666;
-            font-size: 0.95rem;
+            font-size: 1rem;
+            font-weight: 500;
         }
 
         .social-links {
             display: flex;
             gap: 1rem;
-            margin-top: 2rem;
+            margin-top: 2.5rem;
         }
 
         .social-links a {
-            width: 45px;
-            height: 45px;
+            width: 50px;
+            height: 50px;
             border-radius: 50%;
-            background: var(--dark);
+            background: var(--gradient-2);
             color: white;
             display: flex;
             align-items: center;
             justify-content: center;
             text-decoration: none;
             transition: all 0.3s ease;
+            font-size: 1.3rem;
+            box-shadow: 0 5px 15px rgba(155,89,182,0.3);
         }
 
         .social-links a:hover {
-            background: var(--accent);
-            transform: translateY(-3px);
+            transform: translateY(-5px) rotate(10deg) scale(1.1);
+            box-shadow: 0 10px 25px rgba(155,89,182,0.4);
         }
 
         .map-container {
-            border-radius: 20px;
+            border-radius: 30px;
             overflow: hidden;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.15);
             height: 100%;
-            min-height: 400px;
+            min-height: 450px;
+            border: 5px solid var(--mint);
         }
 
         .map-container iframe {
@@ -621,51 +813,80 @@
         footer {
             background: var(--dark);
             color: white;
-            padding: 3rem 2rem 1rem;
+            padding: 4rem 2rem 2rem;
             text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: var(--gradient-1);
         }
 
         .footer-content {
             max-width: 1200px;
             margin: 0 auto;
+            position: relative;
+            z-index: 1;
         }
 
         .footer-logo {
-            font-family: 'Playfair Display', serif;
-            font-size: 2.5rem;
-            color: var(--gold);
+            font-family: 'Syne', sans-serif;
+            font-size: 3rem;
+            font-weight: 800;
+            background: var(--gradient-1);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
             margin-bottom: 1rem;
         }
 
         .footer-tagline {
-            font-size: 1.2rem;
-            color: var(--primary);
-            margin-bottom: 2rem;
+            font-size: 1.3rem;
+            color: var(--mint);
+            margin-bottom: 2.5rem;
+            font-weight: 600;
         }
 
         .footer-locations {
             display: flex;
             justify-content: center;
             gap: 3rem;
-            margin-bottom: 2rem;
+            margin-bottom: 2.5rem;
             flex-wrap: wrap;
         }
 
         .location {
             display: flex;
             align-items: center;
-            gap: 0.5rem;
+            gap: 0.8rem;
+            padding: 1rem 2rem;
+            background: rgba(255,255,255,0.1);
+            border-radius: 50px;
+            border: 2px solid var(--mint);
         }
 
         .location i {
-            color: var(--gold);
+            color: var(--yellow);
+            font-size: 1.2rem;
+        }
+
+        .location span {
+            font-weight: 600;
         }
 
         .footer-bottom {
-            border-top: 1px solid rgba(255,255,255,0.1);
-            padding-top: 2rem;
-            margin-top: 2rem;
+            border-top: 2px solid rgba(255,255,255,0.1);
+            padding-top: 2.5rem;
+            margin-top: 2.5rem;
             color: rgba(255,255,255,0.6);
+            font-weight: 500;
         }
 
         /* Animations */
@@ -682,13 +903,13 @@
 
         @keyframes bounce {
             0%, 20%, 50%, 80%, 100% {
-                transform: translateX(-50%) translateY(0);
+                transform: translateY(0);
             }
             40% {
-                transform: translateX(-50%) translateY(-10px);
+                transform: translateY(-15px);
             }
             60% {
-                transform: translateX(-50%) translateY(-5px);
+                transform: translateY(-7px);
             }
         }
 
@@ -703,16 +924,22 @@
             }
 
             .hero-content h1 {
-                font-size: 2.5rem;
+                font-size: 3rem;
+                letter-spacing: -1px;
             }
 
             .hero-content .tagline {
-                font-size: 1.2rem;
+                font-size: 1.4rem;
             }
 
             .hero-buttons {
                 flex-direction: column;
-                padding: 0 2rem;
+                padding: 0 1rem;
+            }
+
+            .btn {
+                width: 100%;
+                max-width: 300px;
             }
 
             .about-content,
@@ -729,12 +956,21 @@
             }
 
             .section-title h2 {
-                font-size: 2rem;
+                font-size: 2.5rem;
+            }
+
+            .menu-grid {
+                grid-template-columns: 1fr;
             }
 
             .footer-locations {
                 flex-direction: column;
                 gap: 1rem;
+            }
+
+            .about-text h3,
+            .contact-info h3 {
+                font-size: 2rem;
             }
         }
 
@@ -743,34 +979,43 @@
             position: fixed;
             bottom: 30px;
             right: 30px;
-            width: 60px;
-            height: 60px;
+            width: 65px;
+            height: 65px;
             background: #25D366;
             color: white;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 2rem;
-            box-shadow: 0 5px 20px rgba(37, 211, 102, 0.4);
+            font-size: 2.2rem;
+            box-shadow: 0 8px 25px rgba(37, 211, 102, 0.5);
             cursor: pointer;
             z-index: 999;
             transition: all 0.3s ease;
             text-decoration: none;
+            animation: bounce 2s infinite;
+            border: 4px solid white;
         }
 
         .whatsapp-float:hover {
-            transform: scale(1.1);
-            box-shadow: 0 8px 25px rgba(37, 211, 102, 0.5);
+            transform: scale(1.15) rotate(10deg);
+            box-shadow: 0 12px 35px rgba(37, 211, 102, 0.6);
         }
     </style>
 </head>
 <body>
 
+    <!-- Animated Background Shapes -->
+    <div class="bg-shapes">
+        <div class="shape shape-1"></div>
+        <div class="shape shape-2"></div>
+        <div class="shape shape-3"></div>
+    </div>
+
     <!-- Navigation -->
     <nav id="navbar">
         <div class="nav-container">
-            <a href="#" class="logo">FAMMIS PLACE</a>
+            <a href="#" class="logo">✨ FAMMIS PLACE</a>
             <ul class="nav-links">
                 <li><a href="#home">Home</a></li>
                 <li><a href="#about">About</a></li>
@@ -787,11 +1032,11 @@
     <!-- Hero Section -->
     <section class="hero" id="home">
         <div class="hero-content">
-            <h1>FAMMIS PLACE</h1>
+            <h1>FAMMIS PLACE 🧁</h1>
             <p class="tagline">GIVING YOU THE BEST TASTE EVER</p>
-            <p class="subtitle">Best in Badagry/Lagos - Authentic African Cuisine</p>
+            <p class="subtitle">Premium Pastries • Luxury Cakes • Ice Cream</p>
             <div class="hero-buttons">
-                <a href="#menu" class="btn btn-primary">View Menu</a>
+                <a href="#menu" class="btn btn-primary">View Menu 🍰</a>
                 <a href="#reservation" class="btn btn-secondary">Book a Table</a>
             </div>
         </div>
@@ -805,32 +1050,32 @@
         <div class="container">
             <div class="section-title">
                 <h2>Our Story</h2>
-                <p>Experience the authentic taste of Africa</p>
+                <p>Artisan bakery & patisserie excellence</p>
             </div>
             <div class="about-content">
                 <div class="about-image">
-                    <img src="[RESTAURANT_INTERIOR_IMAGE]" alt="Fammis Place Interior">
+                    <img src="[BAKERY_INTERIOR_IMAGE]" alt="Fammis Place Bakery">
                 </div>
                 <div class="about-text">
                     <h3>Welcome to Fammis Place</h3>
-                    <p>Located in the heart of Badagry, Lagos, Fammis Place brings you the finest African cuisine with a modern twist. Our passion for authentic flavors and exceptional service has made us the go-to destination for food lovers.</p>
-                    <p>From our signature Jollof Rice to perfectly grilled Suya, every dish is prepared with love, fresh ingredients, and traditional recipes passed down through generations.</p>
+                    <p>Located in the heart of Badagry, Lagos, Fammis Place is your premier destination for luxury cakes, artisan pastries, and premium ice cream. Our passion for baking excellence and use of the finest ingredients has made us the go-to spot for special occasions and everyday indulgence.</p>
+                    <p>From our signature luxury cakes adorned with African-inspired designs to our perfectly flaky meat pies and refreshing ice cream, every creation is crafted with love, precision, and the finest ingredients.</p>
                     <div class="features">
                         <div class="feature">
-                            <i class="fas fa-utensils"></i>
-                            <span>Authentic Recipes</span>
+                            <i class="fas fa-birthday-cake"></i>
+                            <span>Luxury Cakes</span>
                         </div>
                         <div class="feature">
-                            <i class="fas fa-leaf"></i>
-                            <span>Fresh Ingredients</span>
+                            <i class="fas fa-bread-slice"></i>
+                            <span>Fresh Pastries</span>
                         </div>
                         <div class="feature">
-                            <i class="fas fa-fire"></i>
-                            <span>Grilled Specialties</span>
+                            <i class="fas fa-ice-cream"></i>
+                            <span>Premium Ice Cream</span>
                         </div>
                         <div class="feature">
                             <i class="fas fa-heart"></i>
-                            <span>Made with Love</span>
+                            <span>Baked with Love</span>
                         </div>
                     </div>
                 </div>
@@ -843,30 +1088,30 @@
         <div class="container">
             <div class="section-title">
                 <h2>Our Menu</h2>
-                <p>Delicious African delicacies prepared just for you</p>
+                <p>Indulge in our handcrafted pastries and desserts</p>
             </div>
             
             <div class="menu-categories">
                 <div class="menu-category active">All</div>
-                <div class="menu-category">Main Dishes</div>
-                <div class="menu-category">Grills</div>
-                <div class="menu-category">Swallows</div>
-                <div class="menu-category">Snacks</div>
+                <div class="menu-category">Luxury Cakes</div>
+                <div class="menu-category">Pastries</div>
+                <div class="menu-category">Meat Pies</div>
+                <div class="menu-category">Ice Cream</div>
             </div>
 
             <div class="menu-grid">
                 <!-- Menu Item 1 -->
                 <div class="menu-item">
                     <div class="menu-item-image">
-                        <img src="[JOLLOF_RICE_IMAGE]" alt="Jollof Rice">
-                        <span class="menu-item-badge">Popular</span>
+                        <img src="[LUXURY_CAKE_IMAGE]" alt="Luxury Cake">
+                        <span class="menu-item-badge">Signature</span>
                     </div>
                     <div class="menu-item-content">
                         <div class="menu-item-header">
-                            <h3>Party Jollof Rice</h3>
-                            <span class="price">₦3,500</span>
+                            <h3>African Gold Luxury Cake</h3>
+                            <span class="price">₦35,000</span>
                         </div>
-                        <p>Smoky jollof rice served with grilled chicken, fried plantain, and coleslaw</p>
+                        <p>Multi-tiered chocolate and vanilla cake with gold leaf decoration, African patterns, and hibiscus garnish. Serves 15-20</p>
                         <div class="menu-item-footer">
                             <div class="rating">
                                 <i class="fas fa-star"></i>
@@ -883,14 +1128,15 @@
                 <!-- Menu Item 2 -->
                 <div class="menu-item">
                     <div class="menu-item-image">
-                        <img src="[GRILLED_FISH_IMAGE]" alt="Grilled Fish">
+                        <img src="[MEAT_PIE_IMAGE]" alt="Meat Pie">
+                        <span class="menu-item-badge">Popular</span>
                     </div>
                     <div class="menu-item-content">
                         <div class="menu-item-header">
-                            <h3>Grilled Catfish</h3>
-                            <span class="price">₦5,000</span>
+                            <h3>Classic Nigerian Meat Pie</h3>
+                            <span class="price">₦1,000</span>
                         </div>
-                        <p>Whole grilled catfish with spicy pepper sauce, served with vegetables</p>
+                        <p>Flaky golden pastry filled with seasoned beef, potatoes, and carrots. A beloved West African favorite</p>
                         <div class="menu-item-footer">
                             <div class="rating">
                                 <i class="fas fa-star"></i>
@@ -907,15 +1153,14 @@
                 <!-- Menu Item 3 -->
                 <div class="menu-item">
                     <div class="menu-item-image">
-                        <img src="[SUYA_IMAGE]" alt="Suya">
-                        <span class="menu-item-badge">Hot</span>
+                        <img src="[PASTRIES_IMAGE]" alt="Gourmet Pastries">
                     </div>
                     <div class="menu-item-content">
                         <div class="menu-item-header">
-                            <h3>Beef Suya</h3>
-                            <span class="price">₦2,500</span>
+                            <h3>Assorted Pastry Box (6pcs)</h3>
+                            <span class="price">₦4,500</span>
                         </div>
-                        <p>Spicy grilled beef skewers with traditional suya spice, onions, and tomatoes</p>
+                        <p>Selection of croissants, Danish pastries, almond twists, and fruit-filled delights baked fresh daily</p>
                         <div class="menu-item-footer">
                             <div class="rating">
                                 <i class="fas fa-star"></i>
@@ -932,14 +1177,15 @@
                 <!-- Menu Item 4 -->
                 <div class="menu-item">
                     <div class="menu-item-image">
-                        <img src="[EGUSI_IMAGE]" alt="Egusi Soup">
+                        <img src="[ICE_CREAM_IMAGE]" alt="Premium Ice Cream">
+                        <span class="menu-item-badge">Hot</span>
                     </div>
                     <div class="menu-item-content">
                         <div class="menu-item-header">
-                            <h3>Egusi Soup</h3>
+                            <h3>Tropical Paradise Sundae</h3>
                             <span class="price">₦3,000</span>
                         </div>
-                        <p>Rich melon seed soup with assorted meat, fish, and vegetables</p>
+                        <p>Premium ice cream with mango, dragon fruit, berries, cashews, caramel sauce, and edible gold flakes</p>
                         <div class="menu-item-footer">
                             <div class="rating">
                                 <i class="fas fa-star"></i>
@@ -956,14 +1202,14 @@
                 <!-- Menu Item 5 -->
                 <div class="menu-item">
                     <div class="menu-item-image">
-                        <img src="[POUFF_POUFF_IMAGE]" alt="Puff Puff">
+                        <img src="[CROISSANT_IMAGE]" alt="Butter Croissant">
                     </div>
                     <div class="menu-item-content">
                         <div class="menu-item-header">
-                            <h3>Puff Puff (6pcs)</h3>
-                            <span class="price">₦1,000</span>
+                            <h3>Butter Croissant (3pcs)</h3>
+                            <span class="price">₦2,000</span>
                         </div>
-                        <p>Golden fried dough balls, perfectly sweet and fluffy</p>
+                        <p>Flaky, buttery French croissants baked to golden perfection. Perfect for breakfast or tea time</p>
                         <div class="menu-item-footer">
                             <div class="rating">
                                 <i class="fas fa-star"></i>
@@ -980,15 +1226,63 @@
                 <!-- Menu Item 6 -->
                 <div class="menu-item">
                     <div class="menu-item-image">
-                        <img src="[PEPPER_SOUP_IMAGE]" alt="Pepper Soup">
-                        <span class="menu-item-badge">Chef's Special</span>
+                        <img src="[WEDDING_CAKE_IMAGE]" alt="Wedding Cake">
+                        <span class="menu-item-badge">Custom Order</span>
                     </div>
                     <div class="menu-item-content">
                         <div class="menu-item-header">
-                            <h3>Goat Meat Pepper Soup</h3>
+                            <h3>Custom Wedding Cake</h3>
+                            <span class="price">From ₦55,000</span>
+                        </div>
+                        <p>Bespoke luxury wedding cakes with personalized designs, multiple tiers, and premium decorations</p>
+                        <div class="menu-item-footer">
+                            <div class="rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                            <button class="order-btn">Order Now</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Menu Item 7 -->
+                <div class="menu-item">
+                    <div class="menu-item-image">
+                        <img src="[CHINCHIN_IMAGE]" alt="Chin Chin">
+                    </div>
+                    <div class="menu-item-content">
+                        <div class="menu-item-header">
+                            <h3>Premium Chin Chin (500g)</h3>
+                            <span class="price">₦1,500</span>
+                        </div>
+                        <p>Crunchy, buttery Nigerian snack perfect for any occasion. Made with quality ingredients</p>
+                        <div class="menu-item-footer">
+                            <div class="rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star-half-alt"></i>
+                            </div>
+                            <button class="order-btn">Order Now</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Menu Item 8 -->
+                <div class="menu-item">
+                    <div class="menu-item-image">
+                        <img src="[ICE_CREAM_TUB_IMAGE]" alt="Ice Cream Tub">
+                    </div>
+                    <div class="menu-item-content">
+                        <div class="menu-item-header">
+                            <h3>Take-Home Ice Cream (1L)</h3>
                             <span class="price">₦4,000</span>
                         </div>
-                        <p>Spicy aromatic pepper soup with tender goat meat and traditional spices</p>
+                        <p>Premium homemade ice cream in various flavors: Vanilla, Chocolate, Strawberry, Cookies & Cream</p>
                         <div class="menu-item-footer">
                             <div class="rating">
                                 <i class="fas fa-star"></i>
@@ -1072,7 +1366,7 @@
             <div class="contact-content">
                 <div class="contact-info">
                     <h3>Visit Us Today</h3>
-                    <p>Experience the best African cuisine in Badagry and Lagos. Whether you're dining in or taking out, we're here to serve you with love and authenticity.</p>
+                    <p>Experience the finest pastries, luxury cakes, and ice cream in Badagry and Lagos. Whether you're ordering for a special event or just treating yourself, we're here to serve you with love and excellence.</p>
                     
                     <div class="contact-details">
                         <div class="contact-item">
@@ -1114,7 +1408,7 @@
                             <i class="fas fa-clock"></i>
                             <div>
                                 <h4>Opening Hours</h4>
-                                <p>Mon - Sun: 10:00 AM - 10:00 PM</p>
+                                <p>Mon - Sun: 8:00 AM - 8:00 PM</p>
                             </div>
                         </div>
                     </div>
@@ -1148,7 +1442,7 @@
     <!-- Footer -->
     <footer>
         <div class="footer-content">
-            <div class="footer-logo">FAMMIS PLACE</div>
+            <div class="footer-logo">✨ FAMMIS PLACE</div>
             <p class="footer-tagline">GIVING YOU THE BEST TASTE EVER</p>
             <div class="footer-locations">
                 <div class="location">
@@ -1161,7 +1455,7 @@
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; 2026 Fammis Place. All rights reserved. | Best in Badagry/Lagos</p>
+                <p>&copy; 2026 Fammis Place. All rights reserved. | Premium Pastries & Cakes in Badagry/Lagos 🎂</p>
             </div>
         </div>
     </footer>
@@ -1176,7 +1470,7 @@
         window.addEventListener('scroll', function() {
             const navbar = document.getElementById('navbar');
             if (window.scrollY > 50) {
-                navbar.style.boxShadow = '0 2px 20px rgba(0,0,0,0.1)';
+                navbar.style.boxShadow = '0 5px 30px rgba(0,0,0,0.1)';
             } else {
                 navbar.style.boxShadow = 'none';
             }
